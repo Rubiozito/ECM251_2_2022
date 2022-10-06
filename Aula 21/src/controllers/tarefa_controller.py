@@ -26,4 +26,4 @@ class TarefaController:
         return tarefas  
     
     def mudar_status(self, indice):
-        self._lista_de_tarefas[indice].set_concluida(not self._lista_de_tarefas[indice].get_concluida())
+        self._lista_de_tarefas[indice].set_concluida(not self._lista_de_tarefas[indice].get_concluida)
