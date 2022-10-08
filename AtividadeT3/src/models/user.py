@@ -7,3 +7,5 @@ class User():
 
     def __str__(self) -> str:
         return f'User (name:{self.name}, email:{self.email}, password:{self.password})'
+
+    def get_name
