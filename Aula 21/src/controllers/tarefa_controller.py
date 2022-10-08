@@ -1,4 +1,4 @@
-from models.tarefa import Tarefa
+from src.models.tarefa import Tarefa
 
 class TarefaController:
     def __init__(self) -> None:
@@ -7,23 +7,30 @@ class TarefaController:
     def criar_nova_tarefa(self, descricao):
         tarefa = Tarefa(descricao)
         self._lista_de_tarefas.append(tarefa)
+        print(self._lista_de_tarefas)
     
     def exibir_total_tarefas(self):
         return len(self._lista_de_tarefas)
-
-    def exibir_tarefas_concluidas(self):
+    
+    def exibir_tarefas_concluida(self):
         total = 0
         for tarefa in self._lista_de_tarefas:
             if tarefa.get_concluida():
                 total += 1
         return total
-
+    
     def get_tarefas(self):
         tarefas = []
         for tarefa in self._lista_de_tarefas:
-            tarefas.append({"descricao": tarefa.get_descricao(),
-                            "status": tarefa.get_cncluida()})
-        return tarefas  
+            tarefas.append(
+                {
+                    "descricao": tarefa.get_descricao(),
+                    "status": tarefa.get_concluida()
+                }
+            )
+        return tarefas
     
     def mudar_status(self, indice):
-        self._lista_de_tarefas[indice].set_concluida(not self._lista_de_tarefas[indice].get_concluida)
+        self._lista_de_tarefas[indice].set_concluida(
+            not self._lista_de_tarefas[indice].get_concluida()
+        )
