@@ -5,12 +5,6 @@ class User():
         self._email = email
         self._password = password
 
-    def login(self, email_login, password_login):
-        if email_login == self._email & password_login == self._password:
-            return True
-        else:
-            return False
-
     def __str__(self) -> str:
         return f'User (name:{self.name}, email:{self.email}, password:{self.password})'
 
