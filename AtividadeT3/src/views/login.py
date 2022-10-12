@@ -16,13 +16,12 @@ def show_login_page():
 
     def logar():
         if(UserController().tlogin(user, senha)):
-            st.success("Logado com sucesso!")
-            st.write('ok')
-            home.show_home_page()
+            time.sleep(2)
+            st.session_state.pagina = 'home'
         else:
             st.error("Usuário ou senha inválidos😥")
 
-    st.button(label = 'Entrar', help = 'Clique para entrar com sua conta', on_click = logar())
+    st.button(label = 'Entrar', help = 'Clique para entrar com sua conta', on_click = logar)
 
     with col2:
         st.image(image = "assets/logo_mel.png")
