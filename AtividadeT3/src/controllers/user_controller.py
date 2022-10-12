@@ -16,6 +16,7 @@ class UserController():
         user_try = User(name=name, password = password, email = none)
         for u in self.users_list:
             if u.name == user_try.name and u.password == user_try.password:
+                st.session_state.user = user_try
                 return True
         return False
 
