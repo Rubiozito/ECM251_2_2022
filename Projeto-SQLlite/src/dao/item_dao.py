@@ -48,23 +48,15 @@ class ItemDAO:
         self.cursor.close()
         return item
     
-from src.models.item import Item
-from src.dao.item_dao import ItemDAO
-class ItemController:
-    def __init__(self) -> None:
-        pass
-
-    def pegar_item(self, id) -> Item:
-        item = ItemDAO.get_instance().pegar_item(id)
-        return item
-
-    def inserir_item(self, item) -> bool:
+    def atualizar_item(self, item):
         try:
-            ItemDAO.get_instance().inserir_item(item)
+            self.cursor =self.conn.cursor()
+            self.cursor.execute(f"""UPDATE Itens SET 
+                nome ='{item.nome}',
+                preco = '{item.preco}'
+                WHERE id = '{item.id}'; """)
+            self.conn.commit()
+            self.cursor.close()
         except:
             return False
         return True
-
-    def pegar_todos_itens(self) -> list[Item]:
-        itens = ItemDAO.get_instance().get_all()
-        return itens
