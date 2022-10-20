@@ -60,3 +60,14 @@ class ItemDAO:
         except:
             return False
         return True
+
+    def atualizar_item(self, item):
+        try:
+            self.cursor =self.conn.cursor()
+            self.cursor.execute(f"""DELETE FROM Itens
+                WHERE id = '{id}'""")
+            self.conn.commit()
+            self.cursor.close()
+        except:
+            return False
+        return True
