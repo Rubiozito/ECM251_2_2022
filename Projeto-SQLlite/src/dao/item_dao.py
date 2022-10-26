@@ -14,7 +14,7 @@ class ItemDAO:
         return cls._instance
 
     def _connect(self):
-        self.conn = sqlite3.connect('./databases/sqlite.db')
+        self.conn = sqlite3.connect('./databases/sqlite.sqlite')
 
     def get_all(self):
         self.cursor = self.conn.cursor()
