@@ -1,10 +1,9 @@
 class User():
     
-    def __init__(self, name, email, password, id_carrinho):
+    def __init__(self, name, email, password):
         self.name =  name
         self.email = email
         self.password = password
-        self.id_carrinho = id_carrinho
          
     def __str__(self):
         return f"User: {self.name}, {self.email}"
@@ -24,8 +23,5 @@ class User():
     def set_email(self, email):
         self.email = email
 
-    def get_id_carrinho(self):
-        return self.id_carrinho
-
-    def set_id_carrinho(self, id_carrinho):
-        self.id_carrinho = id_carrinho
+    def set_name(self, name):
+        self.name = name

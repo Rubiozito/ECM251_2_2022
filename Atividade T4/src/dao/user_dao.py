@@ -1,5 +1,5 @@
 import sqlite3
-from models.user import User
+from src.models.user import User
 
 class UserDAO():
 
@@ -15,7 +15,7 @@ class UserDAO():
         return cls._instance
 
     def connect(self):
-        self.conn = sqlite3.connect('/databases/atividade4db.sqlite')
+        self.conn = sqlite3.connect('./databases/sqlite.db')
 
     def get_all():
         self.cursor = self.conn.cursor()
