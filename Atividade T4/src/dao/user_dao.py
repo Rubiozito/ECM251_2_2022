@@ -6,7 +6,7 @@ class UserDAO():
     _instance = None
 
     def __init__(self)-> None:
-        self.connect()
+        self._connect()
 
     @classmethod
     def get_instance(cls):
@@ -14,8 +14,8 @@ class UserDAO():
             cls._instance = UserDAO()
         return cls._instance
 
-    def connect(self):
-        self.conn = sqlite3.connect('./databases/sqlite.db')
+    def _connect(self):
+        self.conn = sqlite3.connect('./databases/atividadeT4.sqlite')
 
     def get_all():
         self.cursor = self.conn.cursor()
@@ -54,3 +54,12 @@ class UserDAO():
         self.cursor.execute("""DELETE FROM Users WHERE email = ?;""", (user.get_email(),))
         self.conn.commit()
         self.cursor.close()
+
+    def search(self, name):
+        self.cursor = self.conn.cursor()
+        self.cursor.execute("""SELECT * FROM Users WHERE name LIKE ?;""", (name,))
+        resultados = []
+        for resultado in self.cursor.fetchall():
+            resultados.append(User(name=resultado[0], email=resultado[1], password=resultado[2], id_carrinho=resultado[3]))
+        self.cursor.close()
+        return resultados
