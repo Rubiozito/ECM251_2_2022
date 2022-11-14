@@ -15,14 +15,14 @@ class UserDAO():
         return cls._instance
 
     def _connect(self):
-        self.conn = sqlite3.connect('./databases/atividadeT4.sqlite')
+        self.conn = sqlite3.connect('../databases/atividadeT4.sqlite')
 
-    def get_all():
+    def get_all(self):
         self.cursor = self.conn.cursor()
         self.cursor.execute("""SELECT * FROM Users;""")
         resultados = []
         for resultado in self.cursor.fetchall():
-            resultados.append(User(name=resultado[0], email=resultado[1], password=resultado[2], id_carrinho=resultado[3]))
+            resultados.append(User(name=resultado[0], email=resultado[1], password=resultado[2]))
         self.cursor.close()
         return resultados
 
@@ -31,7 +31,7 @@ class UserDAO():
         self.cursor.execute("""SELECT * FROM Users WHERE email = ?;""", (email,))
         resultado = self.cursor.fetchone()
         self.cursor.close()
-        return User(name=resultado[0], email=resultado[1], password=resultado[2], id_carrinho=resultado[3])
+        return User(name=resultado[0], email=resultado[1], password=resultado[2])
 
     def insert(self, user):
         try:
@@ -60,6 +60,6 @@ class UserDAO():
         self.cursor.execute("""SELECT * FROM Users WHERE name LIKE ?;""", (name,))
         resultados = []
         for resultado in self.cursor.fetchall():
-            resultados.append(User(name=resultado[0], email=resultado[1], password=resultado[2], id_carrinho=resultado[3]))
+            resultados.append(User(name=resultado[0], email=resultado[1], password=resultado[2]))
         self.cursor.close()
         return resultados

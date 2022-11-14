@@ -15,7 +15,7 @@ class ItemDAO:
         return cls._instance
 
     def connect(self):
-        self._conn = sqlite3.connect('./databeses/atividadet4db.sqlite')
+        self.conn = sqlite3.connect('../databases/atividadeT4.sqlite')
 
     def get_all(self):
         self.cursor = self.conn.cursor()
@@ -65,3 +65,14 @@ class ItemDAO:
         """, (item.get_id()))
         self.conn.commit()
         self.cursor.close()
+
+    def search_item(self, name):
+        self.cursor = self.conn.cursor()
+        self.cursor.execute("""
+            SELECT * FROM Itens WHERE name LIKE ?;
+        """, (name))
+        resultados = []
+        for resultado in self.cursor.fetchall():
+            resultados.append(Item(id=resultado[0], name=resultado[1], price=resultado[2], description=resultado[3]))
+        self.cursor.close()
+        return resultados
