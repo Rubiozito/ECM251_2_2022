@@ -23,3 +23,10 @@ class UserController:
 
     def search_user(self, name: str) -> list:
         return UserDAO().get_instance().search(name)
+
+    def login(self, email: str, password: str) -> bool:
+        user = self.get_user_by_email(email)
+        if user is not None:
+            if user.get_password() == password:
+                return True
+        return False

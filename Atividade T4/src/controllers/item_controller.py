@@ -1,4 +1,5 @@
 from models.item import Item
+from dao.item_dao import ItemDAO
 
 class ItemController():
     
