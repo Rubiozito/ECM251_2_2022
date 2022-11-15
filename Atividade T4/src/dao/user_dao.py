@@ -15,7 +15,7 @@ class UserDAO():
         return cls._instance
 
     def _connect(self):
-        self.conn = sqlite3.connect('../databases/atividadeT4.sqlite')
+        self.conn = sqlite3.connect('./databases/atividadeT4.sqlite')
 
     def get_all(self):
         self.cursor = self.conn.cursor()

@@ -1,6 +1,7 @@
 import streamlit as st
-from views.login_page import login_page
-from views.home_page import home_page
+import views.login_page as log
+import views.home_page as home
+import views.new_user as cad
 
 class Sistema():
     
@@ -14,3 +15,6 @@ class Sistema():
         
         if st.session_state.page == 'home':
             home.home_page()
+
+        if st.session_state.page == 'cadastro':
+            cad.cadastro_page()

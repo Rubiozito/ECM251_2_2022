@@ -25,3 +25,9 @@ def login_page():
 
     with col2:
         st.image(image = "assets/logo_mel.png")
+
+        def go_to_cadastro():
+            st.session_state.page = 'cadastro'
+
+        st.write("Ainda não tem uma conta?")
+        st.button(label='Cadastre-se', help='Clique para se cadastrar', on_click= go_to_cadastro)
