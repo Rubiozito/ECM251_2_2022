@@ -13,4 +13,4 @@ def home_page():
 
     with produtos:
         st.title("Produtos")
-         col1, col2, col3 = st.columns(3)
+        col1, col2, col3 = st.columns(3)
