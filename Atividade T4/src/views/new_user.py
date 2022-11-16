@@ -9,6 +9,8 @@ def cadastro_page():
 
     col1, col2 = st.columns([3,1])
 
+    #não aceita email com @ e ponto, apenas letras e números, arrumar futuramente
+
     with col1:
         nome = st.text_input(label='Digite seu nome:', placeholder = 'Nome👤')
         email = st.text_input(label='Digite seu email:', placeholder = 'Email📧')
