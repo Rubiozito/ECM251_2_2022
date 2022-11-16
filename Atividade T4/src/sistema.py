@@ -9,6 +9,9 @@ class Sistema():
     
     def run():
 
+        if 'cart' not in st.session_state:
+            st.session_state.cart = []
+
         if 'log_user' not in st.session_state:
             st.session_state.log_user = None
 
