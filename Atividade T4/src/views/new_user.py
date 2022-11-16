@@ -1,4 +1,6 @@
 import streamlit as st
+from controllers.user_controller import UserController
+from models.user import User
 
 def cadastro_page():
     st.title("Bem vindo a lohjinha!")
@@ -12,10 +14,11 @@ def cadastro_page():
         email = st.text_input(label='Digite seu email:', placeholder = 'Email📧')
         senha = st.text_input(label='Digite sua senha:', placeholder = 'Senha🔐', type = 'password')
         confirmar_senha = st.text_input(label='Confirme sua senha:', placeholder = 'Senha🔐', type = 'password')
+        new_user = User(nome, email, senha)
 
     def cadastrar():
         if(senha == confirmar_senha):
-            if(UserController().cadastrar(nome, email, senha)):
+            if(UserController().insert_user(new_user)):
                 st.success('Conta criada com sucesso')
             else:
                 st.error('Email já cadastrado')

@@ -16,6 +16,7 @@ def login_page():
 
     def logar():
         if(UserController().login(email, senha)):
+            st.session_state.log_user = UserController().get_user_by_email(email)
             time.sleep(1)
             st.session_state.page = 'home'
         else:
